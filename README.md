@@ -40,7 +40,7 @@ A **colorful**, feature-rich, and interactive Command-Line Interface (**CLI**) t
 
    ```bash
    git clone https://github.com/chiraaax/Rust-Todo-Manager.git
-   cd rust-cli-todo
+   cd rust-todo
    ```
 
 2. **Build the project**:
@@ -123,7 +123,7 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 For any questions or feedback, feel free to reach out:
 
 - **GitHub**: [GitHub Profile](https://github.com/chiraaax)
-- **Email**: [Email](chiranjeewalankeshwara@gmail.com)
+- **Email**: chiranjeewalankeshwara@gmail.com
 
 ---
 

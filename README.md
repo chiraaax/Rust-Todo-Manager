@@ -39,7 +39,7 @@ A **colorful**, feature-rich, and interactive Command-Line Interface (**CLI**) t
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/<your-username>/rust-cli-todo.git
+   git clone https://github.com/chiraaax/Rust-Todo-Manager.git
    cd rust-cli-todo
    ```
 
@@ -122,8 +122,8 @@ This project is licensed under the **MIT License**. See the `LICENSE` file for d
 
 For any questions or feedback, feel free to reach out:
 
-- **GitHub**: [Your GitHub Profile](https://github.com/<your-username>)
-- **Email**: your.email@example.com
+- **GitHub**: [GitHub Profile](https://github.com/chiraaax)
+- **Email**: [Email](chiranjeewalankeshwara@gmail.com)
 
 ---
 

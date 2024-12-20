@@ -41,3 +41,15 @@ fn main() {
         }
     }
 }
+
+fn load_tasks(file_path: &str) -> io::Result<Vec<Task>> {
+    if Path::new(file_path).exists() {
+        let file = File::open(file_path)?;
+        serde_json::from_reader(file).map_err(|e| {
+            eprintln!("{}", format!("Error parsing tasks: {}", e).red());
+            io::Error::new(io::ErrorKind::InvalidData, e)
+        })
+    } else {
+        Ok(Vec::new())
+    }
+}

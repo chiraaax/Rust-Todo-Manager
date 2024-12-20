@@ -119,5 +119,26 @@ fn add_task(tasks: &mut Vec<Task>) {
     println!("{}", "Task added successfully!".bold().green());
 }
 
+fn remove_task(tasks: &mut Vec<Task>) {
+    if tasks.is_empty() {
+        println!("{}", "No tasks to remove.".bold().red());
+        return;
+    }
+    display_tasks(tasks);
+    let index = read_input("Enter the task number to remove: ")
+        .parse::<usize>()
+        .ok();
+    if let Some(i) = index {
+        if i > 0 && i <= tasks.len() {
+            tasks.remove(i - 1);
+            println!("{}", "Task removed successfully!".bold().green());
+        } else {
+            println!("{}", "Invalid task number.".red());
+        }
+    } else {
+        println!("{}", "Invalid input.".red());
+    }
+}
+
 
 

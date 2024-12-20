@@ -62,3 +62,38 @@ fn save_tasks(tasks: &[Task], file_path: &str) -> io::Result<()> {
         .open(file_path)?;
     serde_json::to_writer(file, tasks).map_err(|e| io::Error::new(io::ErrorKind::Other, e))
 }
+
+fn display_tasks(tasks: &[Task]) {
+    if tasks.is_empty() {
+        println!("{}", "No tasks available.".bold().red());
+    } else {
+        println!(
+            "{}",
+            format!("{:<4} {:<3} {:<20} {:<10} {:<10}", "No.", "✔", "Description", "Priority", "Category")
+                .bold()
+                .cyan()
+        );
+        for (index, task) in tasks.iter().enumerate() {
+            let status = if task.completed {
+                "[x]".bold().green()
+            } else {
+                "[ ]".bold().red()
+            };
+            let priority_color = match task.priority.to_lowercase().as_str() {
+                "high" => task.priority.bold().red(),
+                "medium" => task.priority.bold().yellow(),
+                "low" => task.priority.bold().green(),
+                _ => task.priority.normal(),
+            };
+            println!(
+                "{:<4} {:<3} {:<20} {:<10} {:<10}",
+                index + 1,
+                status,
+                task.description,
+                priority_color,
+                task.category.bold().blue()
+            );
+        }
+    }
+}
+

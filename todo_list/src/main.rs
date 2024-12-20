@@ -53,3 +53,12 @@ fn load_tasks(file_path: &str) -> io::Result<Vec<Task>> {
         Ok(Vec::new())
     }
 }
+
+fn save_tasks(tasks: &[Task], file_path: &str) -> io::Result<()> {
+    let file = OpenOptions::new()
+        .write(true)
+        .create(true)
+        .truncate(true)
+        .open(file_path)?;
+    serde_json::to_writer(file, tasks).map_err(|e| io::Error::new(io::ErrorKind::Other, e))
+}

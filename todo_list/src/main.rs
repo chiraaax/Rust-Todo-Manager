@@ -11,3 +11,33 @@ struct Task {
     priority: String,
     category: String,
 }
+
+fn main() {
+    let file_path = "tasks.json";
+    let mut tasks = load_tasks(file_path).unwrap_or_else(|_| Vec::new());
+
+    loop {
+        println!("\n{}", "To-Do List".bold().blue());
+        display_tasks(&tasks);
+
+        println!("{}", "Options:".bold().yellow());
+        println!(
+            "1. Add Task\n2. Remove Task\n3. Mark Completed\n4. Edit Task\n5. Sort Tasks\n6. Exit"
+        );
+
+        let choice = read_input("Enter your choice: ");
+        match choice.trim() {
+            "1" => add_task(&mut tasks),
+            "2" => remove_task(&mut tasks),
+            "3" => mark_task_completed(&mut tasks),
+            "4" => edit_task(&mut tasks),
+            "5" => sort_tasks(&mut tasks),
+            "6" => {
+                println!("{}", "Saving tasks and exiting...".bold().green());
+                save_tasks(&tasks, file_path).expect("Failed to save tasks.");
+                break;
+            }
+            _ => println!("{}", "Invalid option. Please try again.".red()),
+        }
+    }
+}

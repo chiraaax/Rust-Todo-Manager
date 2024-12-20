@@ -105,5 +105,19 @@ fn read_input(prompt: &str) -> String {
     input.trim().to_string()
 }
 
+fn add_task(tasks: &mut Vec<Task>) {
+    let description = read_input("Enter task description: ");
+    let priority = read_input("Enter task priority (High, Medium, Low): ");
+    let category = read_input("Enter task category (e.g., Work, Personal): ");
+
+    tasks.push(Task {
+        description,
+        completed: false,
+        priority,
+        category,
+    });
+    println!("{}", "Task added successfully!".bold().green());
+}
+
 
 

@@ -140,5 +140,26 @@ fn remove_task(tasks: &mut Vec<Task>) {
     }
 }
 
+fn mark_task_completed(tasks: &mut Vec<Task>) {
+    if tasks.is_empty() {
+        println!("{}", "No tasks to mark as completed.".bold().red());
+        return;
+    }
+    display_tasks(tasks);
+    let index = read_input("Enter the task number to mark as completed: ")
+        .parse::<usize>()
+        .ok();
+    if let Some(i) = index {
+        if i > 0 && i <= tasks.len() {
+            tasks[i - 1].completed = true;
+            println!("{}", "Task marked as completed!".bold().green());
+        } else {
+            println!("{}", "Invalid task number.".red());
+        }
+    } else {
+        println!("{}", "Invalid input.".red());
+    }
+}
+
 
 

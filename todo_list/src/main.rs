@@ -161,5 +161,40 @@ fn mark_task_completed(tasks: &mut Vec<Task>) {
     }
 }
 
+fn edit_task(tasks: &mut Vec<Task>) {
+    if tasks.is_empty() {
+        println!("{}", "No tasks to edit.".bold().red());
+        return;
+    }
+    display_tasks(tasks);
+    let index = read_input("Enter the task number to edit: ")
+        .parse::<usize>()
+        .ok();
+    if let Some(i) = index {
+        if i > 0 && i <= tasks.len() {
+            let task = &mut tasks[i - 1];
+            let description = read_input("Enter new description (leave blank to keep current): ");
+            if !description.is_empty() {
+                task.description = description;
+            }
+            let priority = read_input("Enter new priority (leave blank to keep current): ");
+            if !priority.is_empty() {
+                task.priority = priority;
+            }
+            let category = read_input("Enter new category (leave blank to keep current): ");
+            if !category.is_empty() {
+                task.category = category;
+            }
+            println!("{}", "Task updated successfully!".bold().green());
+        } else {
+            println!("{}", "Invalid task number.".red());
+        }
+    } else {
+        println!("{}", "Invalid input.".red());
+    }
+}
+
+
+
 
 

@@ -194,6 +194,28 @@ fn edit_task(tasks: &mut Vec<Task>) {
     }
 }
 
+fn sort_tasks(tasks: &mut Vec<Task>) {
+    println!(
+        "{}",
+        "Sort by:\n1. Priority\n2. Category".bold().yellow()
+    );
+    let choice = read_input("Enter your choice: ");
+    match choice.as_str() {
+        "1" => tasks.sort_by_key(|t| match t.priority.to_lowercase().as_str() {
+            "high" => 1,
+            "medium" => 2,
+            "low" => 3,
+            _ => 4,
+        }),
+        "2" => tasks.sort_by(|a, b| a.category.cmp(&b.category)),
+        _ => println!("{}", "Invalid choice.".red()),
+    }
+    println!("{}", "Tasks sorted successfully!".bold().green());
+}
+
+
+
+
 
 
 
